@@ -2,6 +2,11 @@
 
 浙江大学物理实验课程的 LaTeX 报告工作区，包含实验报告模板、实验报告源文件与数据处理脚本。
 
+## 工作流指南
+
+完整的 AI Agent 辅助实验报告工作流（环境搭建、课件解析、报告生成与归档）见：
+[AI Agent + 大物实验报告工作流](https://peagothedreamer.github.io/learning/ai-agent-physics-lab-report/)
+
 ## 目录结构
 
 ```
