@@ -1,0 +1,41 @@
+# ===== Python =====
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ===== LaTeX 构建产物 =====
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.synctex(busy)
+*.fls
+*.fdb_latexmk
+*.xdv
+*.dvi
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# ===== MinerU 解析中间文件 =====
+*_model.json
+*_content_list*.json
+layout.json
+block_list.json
+
+# ===== 本机配置 =====
+**/.claude/settings.local.json
+
+# ===== 暂不发布 / 隐私排除 =====
+References/
+/铁磁材料的磁滞回线和基本磁化曲线/
+
+# ===== OS =====
+Thumbs.db
+Desktop.ini
+.DS_Store

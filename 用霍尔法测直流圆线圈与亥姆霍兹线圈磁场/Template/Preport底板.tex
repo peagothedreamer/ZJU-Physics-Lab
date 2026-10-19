@@ -1,0 +1,57 @@
+\documentclass{Preport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\usepackage{amsmath}
+
+\exname{用霍尔法测直流圆线圈与亥姆霍兹线圈磁场} %实验名称
+\instructor{周小舟} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{9} %月
+\nday{20} %日
+\nweekday{天} %星期几
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+实验现象：磁场强度随电流强度与空间位置变化，亥姆霍兹线圈中部存在均匀磁场区域。
+
+实验原理：在$x$方向通电流$I_S$，在$z$方向加磁场$B$，则在$y$方向，即试样P、S电极两侧聚积等量异号电荷，产生附加电场。电子受洛伦兹力$f_B=evB$，受侧向电场力$f_E=eE_H$。稳态时两力平衡，可得
+\begin{equation}
+    V_H = R_H \frac{I_S B}{d} = K_H I_S B
+\end{equation}
+其中$R_H=1/(ne)$为霍尔系数，$K_H$为霍尔灵敏度。由此得磁场测量公式：
+\begin{equation}
+    B = \frac{V_H}{K_H I_S}
+\end{equation}
+亥姆霍兹线圈由两个间距等于半径$\bar{R}$的同轴圆线圈组成，轴线上的磁场为
+\begin{equation}
+    B = \frac{1}{2}\mu_0 N I \bar{R}^2 \left[\left(\bar{R}^2 + \left(\frac{\bar{R}}{2}+x\right)^2\right)^{-3/2} + \left(\bar{R}^2 + \left(\frac{\bar{R}}{2}-x\right)^2\right)^{-3/2}\right]
+\end{equation}
+其中点处$B_0 = \left(\dfrac{4}{5}\right)^{3/2} \dfrac{\mu_0 N I}{\bar{R}}$。
+
+实验方法：1、测绘单个圆线圈磁场强度分布；2、测绘亥姆霍兹线圈磁场强度分布。
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+理解霍尔效应基本原理及磁场测量方法，掌握利用霍尔传感器测量单个圆线圈和亥姆霍兹线圈磁场分布的实验技术，学会绘制与分析$B$-$x$曲线，验证亥姆霍兹线圈中部的均匀磁场特性。
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+精确调节霍尔传感器的位置与方向，确保其与磁场方向垂直；排除地磁场等外部磁场干扰；正确处理霍尔电压与磁场强度的关系，验证理论公式与实验结果的吻合度。
+
+\input{注意事项}
+\end{document}

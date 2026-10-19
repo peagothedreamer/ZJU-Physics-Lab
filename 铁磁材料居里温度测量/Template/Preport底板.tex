@@ -1,0 +1,66 @@
+\documentclass{Preport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\usepackage{float}
+\usepackage{amsmath}
+
+\exname{铁磁材料居里温度测量} %实验名称
+\instructor{陈飞燕} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{9} %月
+\nday{29} %日
+\nweekday{二} %星期几
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+铁磁质内部相邻原子间存在强烈的交换耦合作用，使电子自旋磁矩在小区域内自发整齐排列，形成磁畴，因而在无外磁场时即具有自发磁化。温度升高时，热运动逐渐破坏磁畴的有序排列；当温度达到居里温度 $T_C$ 时，磁畴瓦解，材料由铁磁态转变为顺磁态，磁导率 $\mu_r$ 由远大于 1 骤降至接近 1。$T_C$ 仅由化学成分与晶体结构决定，与晶粒大小、取向、应力等结构因素几乎无关，故称结构不灵敏参数。
+
+磁介质的磁化规律为
+\begin{equation}
+B=\mu_0(H+M)=(\chi_m+1)\mu_0H=\mu_r\mu_0H=\mu H
+\end{equation}
+
+本实验采用交流电桥法测量居里温度。将铁氧体样品插入 $L_2$ 线圈后，线圈电感 $L=\mu N^2A/l\propto\mu(T)$ 随温度变化，破坏电桥平衡，桥臂间电位差 $U_{CD}$ 随之改变。取 $R_a=R_b$，电桥平衡条件为
+\begin{equation}
+R_w=\frac{R_b}{R_a}R_1,\qquad L_2=\frac{R_b}{R_a}L_1
+\end{equation}
+
+当电感变化 $\Delta L_2$ 时，桥路输出
+\begin{equation}
+\Delta U_{CD}\propto\frac{\partial U_{CD}}{\partial L_2}\Delta L_2\propto\frac{\omega\Delta L_2}{(R_b+R_w+j\omega L_2)^2}
+\end{equation}
+
+可见 $U_{CD}$ 非线性但单调地反映 $\mu$ 随温度的变化。缓慢升温（或降温），逐点记录温度 $T$ 与电压 $U$，作 $U\sim T$ 曲线，其斜率最大处（拐点）对应的温度即为居里温度 $T_C$。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\linewidth]{mu_T_curve.png}
+    \caption{磁导率 $\mu$ 与磁场 $H$ 及温度 $T$ 的关系（右图突变点对应居里温度 $T_C$）}
+    \label{fig:muT}
+\end{figure}
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+理解磁畴与交换耦合作用下铁磁—顺磁转变的微观机理；掌握 RL 交流电桥的平衡条件与输出电压随电感变化的规律；学会由 $U\sim T$ 曲线确定居里温度并分析升温速率、信号频率对测量结果的影响。
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+调平电桥需将电压调至 $1.0$\,mV 以下，需耐心微调 $R_w$；样品与温度传感器之间存在热滞后，快速加热会使测得 $T_C$ 偏高，须保持动态平衡；居里点附近 $U$ 变化剧烈，应加密取点（0.5\,$^\circ$C）以免漏掉拐点。
+
+\input{注意事项}
+\end{document}

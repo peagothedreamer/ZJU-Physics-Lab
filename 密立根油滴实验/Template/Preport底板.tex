@@ -1,0 +1,59 @@
+\documentclass{Preport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+
+\exname{密立根油滴实验} %实验名称
+\instructor{周小舟} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{9} %月
+\nday{22} %日
+\nweekday{二} %星期几
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+\subsection{实验综述（5分）}
+
+密立根油滴实验通过研究带电油滴在重力场与匀强电场中的运动，精确测定基本电荷量 $e$，从而证明电荷的不连续性。
+
+\textbf{实验现象：}用喷雾器将油雾喷入两平行极板间，油滴因摩擦而带电。未加电场时，油滴在重力和空气粘滞阻力作用下匀速缓慢下落；施加适当电压后，可使油滴静止悬浮或改变运动状态。
+
+\textbf{实验原理——静态平衡法：}设极板间距为 $d$，所加平衡电压为 $U$，当油滴静止时，电场力与重力平衡：
+\begin{equation}
+    qE = mg \implies q\frac{U}{d} = mg \implies q = \frac{mgd}{U}
+    \label{eq:balance}
+\end{equation}
+
+\textbf{油滴质量的确定——匀速下降法：}撤去电压，油滴在重力和斯托克斯粘滞力作用下达到终端匀速 $v_g$，由力平衡：
+\begin{equation}
+    6\pi\eta r v_g = \frac{4}{3}\pi r^3 \rho g
+    \label{eq:stokes}
+\end{equation}
+解得油滴半径 $r = \sqrt{\dfrac{9\eta v_g}{2\rho g}}$，进而得质量 $m = \dfrac{4}{3}\pi r^3 \rho$。其中 $\eta$ 为空气粘滞系数，$\rho$ 为油的密度。
+
+将 $m$ 代入式~\eqref{eq:balance}，即可求得单颗油滴所带电荷量 $q$。
+
+\textbf{基本电荷的测定：}对多颗油滴分别求得电荷量 $q_i$，由于所有电荷均为基本电荷 $e$ 的整数倍，即 $q_i = n_i e$，用公约数法（或差值法）对 $\{q_i\}$ 求最大公约数，即可得到基本电荷 $e$ 的实验值。
+
+\subsection{实验重点（3分）}
+
+掌握静态平衡法与匀速下降法联合使用的物理原理及操作流程；学会选取合适油滴（带电量小于10个基本电荷、平衡电压约200\,V、下落时间在10\,s/mm以内）；理解并熟练运用公约数法从多颗油滴的电荷量数据中提取基本电荷值 $e$，掌握不确定度的计算方法。
+
+\subsection{实验难点（2分）}
+
+一，在显微镜视野中寻找并锁定合适油滴难度较大，油滴过大受布朗运动影响小但难以精确计时，过小则受空气扰动显著；二，准确判断油滴是否达到匀速运动状态并精确计时存在人为误差，同时公约数法要求测量的油滴数量足够多（一般不少于5颗），才能可靠地求得基本电荷值。
+
+\input{注意事项}
+\end{document}

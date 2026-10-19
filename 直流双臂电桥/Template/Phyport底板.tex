@@ -1,0 +1,260 @@
+\documentclass{Phyport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\input{选用宏.tex} %选用宏
+
+\usepackage{circuitikz}
+\input{armbridge.tex}
+
+\exname{直流双臂电桥} %实验名称
+\extable{5} %实验桌号
+\instructor{宋斌} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{10} %月
+\nday{13} %日
+\nweekday{二} %星期几
+
+\redate{} %如有实验补做，补做日期
+\resitu{} %情况说明：
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+（注：将已经写好的“物理实验预习报告”内容拷贝过来）
+
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+实验现象：电桥平衡时，检流计指针指零。
+
+实验原理：用单臂电桥测低电阻时，接线电阻与接触电阻（$0.01\sim1\,\Omega$）会与待测电阻 $R_x$ 串联而被计入测量结果，误差极大。为此将低电阻改为四端接入：电流端 $C_{x1}$、$C_{x2}$ 通电流，电位端 $P_{x1}$、$P_{x2}$ 取电压，只有两电位端之间的电阻才是实测值，附加电阻被“转移”至待测电阻之外。把两个四端电阻 $R_x$、$R_s$ 接入桥路，并另设阻值均大于 $10\,\Omega$ 的标准电阻 $R_3$、$R_4$，用 $r<0.001\,\Omega$ 的粗导线连接 $R_x$ 与 $R_s$，即构成双臂电桥，其电路如图所示。
+
+\begin{figure}[H]
+    \centering
+    \ArmBridge
+    \caption{双臂电桥（开尔文电桥）原理电路图}
+    \label{fig:armbridge}
+\end{figure}
+
+平衡时 $I_G=0$，由基尔霍夫定律可得
+\begin{equation}
+    R_x=\frac{R_1}{R_2}R_s+\frac{R_4 r}{R_3+R_4+r}\left(\frac{R_1}{R_2}-\frac{R_3}{R_4}\right)
+    \label{eq:rx}
+\end{equation}
+若使两对比率臂始终保持 $R_1/R_2=R_3/R_4$，则第二项为零，待测低电阻为
+\begin{equation}
+    R_x=\frac{R_1}{R_2}R_s
+    \label{eq:rx2}
+\end{equation}
+金属的电阻随温度线性变化：$R_t=R_0(1+\alpha t)$，$R_0$ 为 $0\,^\circ\mathrm{C}$ 时的阻值，$\alpha$ 为电阻温度系数。
+
+实验方法：（1）测电阻率。接通检流计并调零，灵敏度置于最低；接入待测金属导体，选适当倍率，先按 B 通电、后按 G 检流，调节粗调与细调盘使检流计偏转减小，逐步提高灵敏度至最高档调平衡，读数 $R_x=$ 倍率 $\times$（粗调$+$细调）；再用游标卡尺测导体直径 $d$、用米尺测长度 $L$。（2）测电阻温度系数。在最高灵敏度下调平衡，开启加热装置设定温度，用升温或降温法每改变约 $5\,^\circ\mathrm{C}$ 测一次 $R$ 与 $t$，记录 10 组数据。
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+掌握双臂电桥测低电阻的原理，理解四端接法与双比率臂使 $R_1/R_2=R_3/R_4$ 以消除引线电阻、接触电阻影响的方法；学会 QJ44 型直流双臂电桥的操作，并由 $R=\dfrac{4L}{\pi d^2}\rho$ 测定金属电阻率与电阻温度系数。
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+操作顺序须“先按 B 后按 G”，并随平衡程度逐步提高灵敏度，否则检流计易过载；高灵敏度下平衡点难以判准，需兼顾调节速率与读数精度；升温测量时导体温度与显示温度不一致，须待温度稳定后同步读取温度与电阻。
+
+\section{实验操作与原始数据（50分）}
+（将有老师签名的“自备数据记录草稿纸”的扫描或手机拍摄图粘贴在下方，完整保留姓名，学号，教师签字和日期。按老师的要求拍摄实验过程图，附在此处）
+
+\subsection{实验仪器}
+
+QJ44 型直流双臂电桥（0.2 级，含检流计与倍率、粗调、细调盘），温控加热装置，待测铜导体棒，游标卡尺（分度值 $0.02\,\mathrm{mm}$）。
+
+\subsection{实验步骤}
+
+\begin{enumerate}
+    \item 接通电桥电源与检流计，将灵敏度调至最低并调零检流计。
+    \item 按四端接法接入待测铜导体棒，选择适当倍率；先按 B 通电，后按 G 检流，调节粗调盘与细调盘使检流计偏转逐渐减小。
+    \item 逐步提高电桥灵敏度，反复微调至检流计指零，在最高灵敏度下读数 $R_x=$ 倍率 $\times$（阻值粗调 $+$ 阻值细调）。
+    \item 用游标卡尺在导体棒不同位置测量直径 $d$，用米尺测量两电位端之间的长度 $L$。
+    \item 保持电桥平衡状态接入加热装置，设定目标温度，待温度稳定后每约 $5\,^\circ\mathrm{C}$ 同步记录温度 $t$ 与电阻 $R$，共 10 组。
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{实验过程}
+    \caption{实验装置与接线（SR-1/a 型双臂电桥四端接线夹具、QJ44 型直流双臂电桥、温控加热装置）}
+    \label{fig:process}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{实验数据}
+    \caption{原始数据记录（含姓名、学号、教师签字与日期）}
+    \label{fig:rawdata}
+\end{figure}
+
+\section{结果与分析（30分）}
+\subsection{数据处理与结果（20分）}
+（列出数据表格、选择适合的数据处理方法、写出测量或计算结果。）
+
+\subsubsection{测量金属导体的电阻率}
+
+\begin{table}[H]
+    \centering
+    \caption{金属导体电阻率测量数据}
+    \label{tab:resistivity}
+    \begin{tabular}{cccc}
+        \toprule
+        阻值 $R$ / $\Omega$ & 直径 $d$ / mm & 长度 $L$ / cm & 电阻率 $\rho$ / $\Omega\cdot\mathrm{m}$ \\
+        \midrule
+        $6.52\times10^{-4}$ & 4.04 & 30.00 & $2.79\times10^{-8}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+电阻率由 $R=\dfrac{4L}{\pi d^2}\rho$ 反解得到：
+\begin{equation}
+    \rho=R\frac{\pi d^2}{4L}
+    =6.52\times10^{-4}\times\frac{\pi\times(4.04\times10^{-3})^2}{4\times30.00\times10^{-2}}
+    =2.786\times10^{-8}\ \Omega\cdot\mathrm{m}
+    \label{eq:rho}
+\end{equation}
+
+\subsubsection{测量金属导体的电阻温度系数}
+
+\begin{table}[H]
+    \centering
+    \caption{电阻随温度的变化}
+    \label{tab:temperature}
+    \begin{tabular}{ccccccccccc}
+        \toprule
+        次数 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \midrule
+        $t$ / $^\circ\mathrm{C}$ & 24.3 & 29.3 & 34.3 & 39.3 & 44.3 & 49.3 & 54.3 & 59.3 & 64.3 & 69.3 \\
+        $R_x$ / $10^{-3}\Omega$ & 4.815 & 4.908 & 5.007 & 5.102 & 5.190 & 5.288 & 5.359 & 5.471 & 5.566 & 5.660 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{处理方式 1：分组逐差法。} 将数据按 $i$ 与 $i+5$ 分两组代入
+\begin{equation}
+    \alpha_i=\frac{R_{x(i+5)}-R_{x(i)}}{R_{x(i)}t_{(i+5)}-R_{x(i+5)}t_{(i)}},\qquad i=1,2,3,4,5
+    \label{eq:alphai}
+\end{equation}
+得
+\begin{equation*}
+    \alpha_1=4.34\times10^{-3}\,^\circ\mathrm{C}^{-1},\quad
+    \alpha_2=4.12\times10^{-3}\,^\circ\mathrm{C}^{-1},\quad
+    \alpha_3=4.25\times10^{-3}\,^\circ\mathrm{C}^{-1},
+\end{equation*}
+\begin{equation*}
+    \alpha_4=4.24\times10^{-3}\,^\circ\mathrm{C}^{-1},\quad
+    \alpha_5=4.31\times10^{-3}\,^\circ\mathrm{C}^{-1}
+\end{equation*}
+取平均得 $\bar{\alpha}=\dfrac{1}{5}\sum_{i=1}^{5}\alpha_i=4.25\times10^{-3}\,^\circ\mathrm{C}^{-1}$。
+
+\textbf{处理方式 2：最小二乘线性拟合（图解法）。} 作 $R_t-t$ 曲线如图~\ref{fig:rtcurve}，线性拟合得
+\begin{equation*}
+    R_t=(0.01867\,t+4.36300)\times10^{-3}\ \Omega
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.78\linewidth]{Rt_curve}
+    \caption{铜导体电阻 $R_t$ 随温度 $t$ 的变化及线性拟合}
+    \label{fig:rtcurve}
+\end{figure}
+
+由 $R_t=R_0(1+\alpha t)$ 知斜率与截距之比即为温度系数：
+\begin{equation*}
+    \alpha_0=\frac{0.01867}{4.36300}\ ^\circ\mathrm{C}^{-1}=4.28\times10^{-3}\ ^\circ\mathrm{C}^{-1}
+\end{equation*}
+拟合直线的截距 $R_0=4.363\times10^{-3}\,\Omega$ 即导体在 $0\,^\circ\mathrm{C}$ 时的电阻。两种处理方法所得温度系数一致（$4.25\times10^{-3}$ 与 $4.28\times10^{-3}\,^\circ\mathrm{C}^{-1}$）。
+
+\subsection{误差分析（10分）}
+（运用测量误差、相对误差或不确定度等分析实验结果，写出完整的结果表达式，并分析误差原因。）
+
+\subsubsection{测量金属导体的电阻率}
+
+由式~\eqref{eq:rho}，$\rho=R\dfrac{\pi d^2}{4L}$，先求各直接测量量的不确定度。电桥为 0.2 级，按均匀分布取
+\begin{equation*}
+    u(R)=\frac{0.2\%\times R}{\sqrt{3}}=\frac{0.2\%\times6.52\times10^{-4}}{\sqrt{3}}=7.5\times10^{-7}\ \Omega
+\end{equation*}
+游标卡尺与米尺的分度值分别为 $0.02\,\mathrm{mm}$、$0.5\,\mathrm{mm}$，同样按均匀分布：
+\begin{equation*}
+    u(d)=\frac{0.02}{\sqrt{3}}\,\mathrm{mm}=0.012\,\mathrm{mm},\qquad
+    u(L)=\frac{0.5}{\sqrt{3}}\,\mathrm{mm}=0.29\,\mathrm{mm}
+\end{equation*}
+作间接测量不确定度合成，电阻率的相对不确定度为
+\begin{equation}
+    \frac{u(\rho)}{\rho}=\sqrt{\left(\frac{u(R)}{R}\right)^2+\left(2\frac{u(d)}{d}\right)^2+\left(\frac{u(L)}{L}\right)^2}
+    =\sqrt{(0.115\%)^2+(0.572\%)^2+(0.096\%)^2}=0.59\%
+    \label{eq:relrho}
+\end{equation}
+故
+\begin{equation*}
+    u(\rho)=\rho\cdot\frac{u(\rho)}{\rho}=2.786\times10^{-8}\times0.59\%=0.017\times10^{-8}\ \Omega\cdot\mathrm{m}
+\end{equation*}
+电阻率的测量结果为
+\begin{equation*}
+    \rho=(2.79\pm0.02)\times10^{-8}\ \Omega\cdot\mathrm{m}
+\end{equation*}
+
+由式~\eqref{eq:relrho} 可知，三项相对分量中直径项 $2u(d)/d=0.572\%$ 占绝对主导，长度项与电桥项分别仅 $0.096\%$ 与 $0.115\%$，故提高测量精度的关键在于直径的测量。误差主要来源：
+
+\begin{itemize}
+    \item 导体棒的电流接头可在小范围内晃动，导致两电位端之间的有效长度 $L$ 难以准确界定；
+    \item 游标卡尺读数存在估读误差，且导体棒存在微小弯曲，其截面并非理想圆，同一位置不同方向的直径读数有差异；
+    \item 电桥本身的 0.2 级准确度限制，以及接触电阻未被比率臂完全抵消的残余影响。
+\end{itemize}
+
+\subsubsection{测量金属导体的电阻温度系数}
+
+两种处理方法所得 $\alpha$ 分别为 $4.25\times10^{-3}$ 与 $4.28\times10^{-3}\,^\circ\mathrm{C}^{-1}$，与理论值 $\alpha=4.33\times10^{-3}\,^\circ\mathrm{C}^{-1}$ 相比，相对误差分别为
+\begin{equation*}
+    E_1=\frac{|\bar{\alpha}-\alpha|}{\alpha}=1.8\%,\qquad
+    E_2=\frac{|\alpha_0-\alpha|}{\alpha}=1.2\%
+\end{equation*}
+两者均在 2\% 以内相符。误差主要来源：
+
+\begin{itemize}
+    \item 加热过程中导体自身温度分布不均，其真实温度与温控装置显示的温度并不完全一致；
+    \item 温度稳定后调节电桥平衡需要时间，在此期间导体温度会有微小漂移，导致 $R$ 与 $t$ 不能严格同步；
+    \item 拟合直线的截距 $R_0$ 是由 $24\sim69\,^\circ\mathrm{C}$ 数据外推至 $0\,^\circ\mathrm{C}$ 得到的，外推距离远，截距的相对误差被放大后传递到 $\alpha$。
+\end{itemize}
+
+\section{实验探讨与思考题（10分）}
+（对实验内容、现象和过程的小结，不超过100字。并解答教材或讲义或老师布置的思考题，请先写题干，再作答。）
+
+本次实验用 QJ44 型双臂电桥测铜导体的低电阻，得到电阻率 $\rho=(2.79\pm0.02)\times10^{-8}\,\Omega\cdot\mathrm{m}$，温度系数 $\alpha\approx4.3\times10^{-3}\,^\circ\mathrm{C}^{-1}$，与理论值相符。实验中体会到四端接法与双比率臂 $R_1/R_2=R_3/R_4$ 对消除引线及接触电阻的关键作用，也理解了双臂电桥相对惠斯登电桥在低电阻测量上的优势。
+
+\subsection*{思考题 1：双臂电桥和惠斯登电桥有哪些异同？}
+
+相同点：两者都利用电桥平衡时检流计指零、由桥臂电阻比与标准电阻反推待测电阻，都是比较法测电阻；均由改变桥臂电阻来调节平衡。
+
+不同点：惠斯登电桥只有一个桥臂接入待测电阻，接线电阻和接触电阻与 $R_x$ 串联后直接进入结果，测 $1\,\Omega$ 以下的低电阻时误差极大，因此只适用于 $1\,\Omega\sim1\,\mathrm{M}\Omega$ 的中值电阻；双臂电桥有两个对比臂同时接入待测电阻 $R_x$ 与比较臂 $R_s$，并采用四端接法与双比率臂，能把引线电阻和接触电阻“赶出”测量回路，故用于测量 $1\,\Omega$ 以下的低电阻。
+
+\subsection*{思考题 2：为什么双臂电桥测量低电阻时能够消除（或减小）附加电阻对测量结果的影响？}
+
+由式~\eqref{eq:rx}，$R_x$ 中包含附加项 $\dfrac{R_4r}{R_3+R_4+r}\left(\dfrac{R_1}{R_2}-\dfrac{R_3}{R_4}\right)$，减小附加电阻的影响即要使其尽可能小，这由两点保证：
+
+\begin{enumerate}
+    \item 连接 $R_x$ 与 $R_s$ 的粗导线电阻 $r<0.001\,\Omega$，而 $R_3$、$R_4$ 均大于 $10\,\Omega$，故因子 $\dfrac{R_4r}{R_3+R_4+r}$ 极小；
+    \item 调节时始终保持 $\dfrac{R_1}{R_2}=\dfrac{R_3}{R_4}$，使括号内的差为零。此时 $R_x=\dfrac{R_1}{R_2}R_s$，与 $r$ 无关。
+\end{enumerate}
+
+此外，电流端 $C_{x1}$、$C_{x2}$、$C_{s1}$、$C_{s2}$ 处的接触电阻只与电源回路串联，电位端 $P_{x1}$、$P_{x2}$、$P_{s1}$、$P_{s2}$ 处的接触电阻只与高阻值的比率臂串联，二者均不改变平衡条件，从而消除了附加电阻对测量结果的影响。
+
+\subsection*{思考题 3：如果四端电阻的电流端和电位端接反了，对测量有哪些影响？}
+
+接反后电流端与被测段串联的附加电阻（接触电阻与引线电阻）不再被排除在测量回路之外，而 $R_3$、$R_4$ 支路则串入了本应属于电流回路的电阻，式~\eqref{eq:rx} 中括号内的差不再能为零，附加电阻将直接进入 $R_x$ 的测量结果，使测得的电阻显著偏大；对于阻值本身只有 $10^{-4}\,\Omega$ 量级的低电阻，这一偏差甚至可能超过待测电阻本身，测量失去意义。
+
+\input{注意事项}
+\end{document}

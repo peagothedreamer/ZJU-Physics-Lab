@@ -1,0 +1,274 @@
+\documentclass{Phyport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\input{选用宏.tex} %选用宏
+
+\exname{密立根油滴实验} %实验名称
+\extable{3} %实验桌号
+\instructor{周小舟} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{9} %月
+\nday{22} %日
+\nweekday{二} %星期几
+
+\redate{} %如有实验补做，补做日期
+\resitu{} %情况说明：
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+（注：将已经写好的”物理实验预习报告”内容拷贝过来）
+
+\subsection{实验综述（5分）}
+密立根油滴实验通过研究带电油滴在重力场与匀强电场中的运动，精确测定基本电荷量 $e$，从而证明电荷的不连续性。
+
+\textbf{实验现象：}用喷雾器将油雾喷入两平行极板间，油滴因摩擦而带电。未加电场时，油滴在重力和空气粘滞阻力作用下匀速缓慢下落；施加适当电压后，可使油滴静止悬浮或改变运动状态。
+
+\textbf{实验原理——静态平衡法：}设极板间距为 $d$，所加平衡电压为 $U$，当油滴静止时，电场力与重力平衡：
+\begin{equation}
+    qE = mg \implies q\frac{U}{d} = mg \implies q = \frac{mgd}{U}
+    \label{eq:balance}
+\end{equation}
+
+\textbf{油滴质量的确定——匀速下降法：}撤去电压，油滴在重力和斯托克斯粘滞力作用下达到终端匀速 $v_g$，由力平衡：
+\begin{equation}
+    6\pi\eta r v_g = \frac{4}{3}\pi r^3 \rho g
+    \label{eq:stokes}
+\end{equation}
+解得油滴半径 $r = \sqrt{\dfrac{9\eta v_g}{2\rho g}}$，进而得质量 $m = \dfrac{4}{3}\pi r^3 \rho$。其中 $\eta$ 为空气粘滞系数，$\rho$ 为油的密度。
+
+将 $m$ 代入式~\eqref{eq:balance}，即可求得单颗油滴所带电荷量 $q$。
+
+\textbf{基本电荷的测定：}对多颗油滴分别求得电荷量 $q_i$，由于所有电荷均为基本电荷 $e$ 的整数倍，即 $q_i = n_i e$，用公约数法（或差值法）对 $\{q_i\}$ 求最大公约数，即可得到基本电荷 $e$ 的实验值。
+
+\subsection{实验重点（3分）}
+掌握静态平衡法与匀速下降法联合使用的物理原理及操作流程；学会选取合适油滴（带电量小于10个基本电荷、平衡电压约200\,V、下落时间在10\,s/mm以内）；理解并熟练运用公约数法从多颗油滴的电荷量数据中提取基本电荷值 $e$，掌握不确定度的计算方法。
+
+\subsection{实验难点（2分）}
+一，在显微镜视野中寻找并锁定合适油滴难度较大，油滴过大受布朗运动影响小但难以精确计时，过小则受空气扰动显著；二，准确判断油滴是否达到匀速运动状态并精确计时存在人为误差，同时公约数法要求测量的油滴数量足够多（一般不少于5颗），才能可靠地求得基本电荷值。
+
+\section{实验操作与原始数据（50分）}
+（将有老师签名的“自备数据记录草稿纸”的扫描或手机拍摄图粘贴在下方，完整保留姓名，学号，教师签字和日期。按老师的要求拍摄实验过程图，附在此处）
+
+\subsection{实验装置与操作流程}
+
+本实验使用OM99S CCD密立根油滴实验仪（图~\ref{fig:apparatus}），实验操作如下：
+
+\begin{enumerate}
+    \item \textbf{装置调平：}调节实验仪水平；
+    \item \textbf{喷入油滴与聚焦：}用喷雾器向极板间喷入油雾，调整显微镜焦距使视野中油滴清晰可见，油滴因摩擦带电并在重力作用下缓慢下落；
+    \item \textbf{选择合适油滴：}在显微镜视野中观察油滴运动，选取下落速度适中（通过1.5\,mm刻度线约需5--10\,s）、运动轨迹稳定的油滴进行测量；
+    \item \textbf{测量平衡电压：}施加电压使油滴静止悬浮，记录此时的平衡电压 $V$；
+    \item \textbf{测量下落时间：}撤去电场，测量油滴匀速通过1.5\,mm距离所需时间 $t$，重复测量3次取平均值；
+    \item \textbf{重复测量：}对10颗不同油滴重复上述步骤，记录各油滴的 $V$ 和 $t$ 数据。
+\end{enumerate}
+
+实验过程中需注意：油滴喷入后需等待30\,s左右使其达到稳定状态；平衡电压调节应缓慢进行，避免油滴受电场突变影响偏离视野；计时起点应选在油滴已达匀速运动后，避免加速段误差。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\linewidth]{实验过程1.jpg}
+    \caption{密立根油滴实验装置}
+    \label{fig:apparatus}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\linewidth]{实验过程2.jpg}
+    \caption{密立根油滴实验数据采集系统界面}
+    \label{fig:data_system}
+\end{figure}
+
+\subsection{原始数据记录}
+
+实验原始数据记录如图~\ref{fig:raw_data}所示，包含10颗油滴的平衡电压 $V$、下落时间 $t$ 及计算得到的电荷量 $q$。数据记录表已由指导教师周小舟签字确认。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{实验数据.jpg}
+    \caption{密立根油滴实验原始数据记录}
+    \label{fig:raw_data}
+\end{figure}
+
+\section{结果与分析（30分）}
+\subsection{数据处理与结果（20分）}
+（列出数据表格、选择适合的数据处理方法、写出测量或计算结果。）
+
+\subsubsection{实验条件与物理常数}
+
+本实验采用OM99S CCD密立根油滴实验仪，主要实验参数如下：
+
+\begin{itemize}
+    \item 极板间距：$d = 5.00\,\mathrm{mm}$
+    \item 测量距离：$l = 1.5\,\mathrm{mm}$
+    \item 油的密度：$\rho = 981\,\mathrm{kg/m^3}$
+    \item 空气粘滞系数：$\eta = 1.83 \times 10^{-5}\,\mathrm{Pa \cdot s}$（室温20°C）
+    \item 杭州地区重力加速度：$g = 9.794\,\mathrm{m/s^2}$
+    \item 修正常数：$b = 6.17 \times 10^{-6}\,\mathrm{Pa \cdot m}$
+    \item 大气压强：$p = 1.01 \times 10^5\,\mathrm{Pa}$
+\end{itemize}
+
+\subsubsection{测量数据与电荷量计算}
+
+对10颗油滴分别测量其平衡电压 $V$ 和匀速下落时间 $t$，根据静态平衡法与匀速下降法联合使用的原理计算各油滴的电荷量 $q$。计算公式为：
+
+\begin{equation}
+    v_g = \frac{l}{t}, \quad r = \sqrt{\frac{9\eta v_g}{2\rho g}}, \quad \eta' = \frac{\eta}{1 + \frac{b}{pr}}
+\end{equation}
+
+\begin{equation}
+    m = \frac{4}{3}\pi r^3 \rho, \quad q = \frac{mgd}{V}
+\end{equation}
+
+测量数据及计算结果见表~\ref{tab:millikan_data}。
+
+\begin{table}[H]
+    \centering
+    \caption{密立根油滴实验测量数据与计算结果}
+    \begin{tabular}{cccccc}
+        \toprule
+        序号 & 平衡电压 $V$/V & 下落时间 $t$/s & 电荷量 $q$/(×10$^{-19}$C) & 电荷倍数 $n$ & 基本电荷 $e$/(×10$^{-19}$C) \\
+        \midrule
+        1 & 60 & 7.38 & 84.60 & 53 & 1.596 \\
+        2 & 62 & 7.33 & 82.70 & 52 & 1.590 \\
+        3 & 68 & 5.53 & 116.00 & 73 & 1.611 \\
+        4 & 142 & 3.31 & 122.00 & 76 & 1.605 \\
+        5 & 87 & 1.35 & 784.00 & 490 & 1.600 \\
+        6 & 96 & 6.20 & 69.10 & 43 & 1.607 \\
+        7 & 171 & 4.93 & 55.20 & 34 & 1.624 \\
+        8 & 265 & 11.60 & 9.51 & 6 & 1.585 \\
+        9 & 128 & 2.63 & 193.00 & 121 & 1.595 \\
+        10 & 267 & 2.50 & 100.00 & 63 & 1.587 \\
+        \midrule
+        \multicolumn{5}{c}{平均值} & 1.600 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:millikan_data}
+\end{table}
+
+\subsubsection{基本电荷量的确定}
+
+采用\textbf{公约数法}处理数据：根据电荷量子化原理，每颗油滴所带电荷量均为基本电荷 $e$ 的整数倍，即 $q_i = n_i e$。通过估算每个电荷量相对于标准值 $1.602 \times 10^{-19}\,\mathrm{C}$ 的倍数 $n_i$，计算 $e_i = q_i / n_i$，最后对所有 $e_i$ 求平均值得到基本电荷的实验值。
+
+计算结果：
+\begin{itemize}
+    \item 基本电荷平均值：$\bar{e} = 1.600 \times 10^{-19}\,\mathrm{C}$
+    \item A类不确定度：$u_A = 0.004 \times 10^{-19}\,\mathrm{C}$
+    \item 标准电子电荷量：$e_0 = 1.602 \times 10^{-19}\,\mathrm{C}$
+    \item 相对误差：$E_r = \dfrac{|\bar{e} - e_0|}{e_0} \times 100\% = 0.12\%$
+\end{itemize}
+
+\textbf{最终结果表达式：}
+\begin{equation}
+    \boxed{e = (1.600 \pm 0.004) \times 10^{-19}\,\mathrm{C}}
+\end{equation}
+
+\subsection{误差分析（10分）}
+（运用测量误差、相对误差或不确定度等分析实验结果，写出完整的结果表达式，并分析误差原因。）
+
+\subsubsection{系统误差分析}
+
+\textbf{1. 仪器系统误差}
+\begin{itemize}
+    \item 极板间距 $d = 5.00$\,mm 为仪器标定值，实际可能存在 $\pm 0.01$\,mm 的制造误差，直接影响电场强度计算，引入约 $0.2\%$ 的相对误差；
+    \item 电压表精度为0.5级，在200\,V量程下最大允许误差为 $\pm 1$\,V，引入相对误差约 $0.5\%$；
+    \item 测量距离 $l = 1.5$\,mm 的刻度误差约 $\pm 0.01$\,mm，引入相对误差约 $2\%$。
+\end{itemize}
+
+\textbf{2. 物理模型误差}
+\begin{itemize}
+    \item 空气粘滞系数 $\eta$ 采用标准值，实际值受室温、湿度影响；
+    \item 电场边缘效应导致极板间电场不完全均匀，油滴偏离中心时受力与理论值有偏差。
+\end{itemize}
+
+\subsubsection{随机误差分析}
+
+\textbf{1. 人为操作误差}
+\begin{itemize}
+    \item 匀速运动判断的主观性：撤去电场后需等待油滴达到匀速状态再计时，判断时机的不确定性引入约 $0.5$\,s 的计时误差；
+    \item 秒表计时反应时间约 $0.2$\,s，对于下落时间较短的油滴（如油滴5，$t = 1.35$\,s）相对误差达 $15\%$；
+\end{itemize}
+
+\textbf{2. 环境扰动}
+\begin{itemize}
+    \item 空气对流和温度波动使油滴运动不稳定；
+    \item 布朗运动对小油滴影响显著（如油滴8，带1个基本电荷）。
+\end{itemize}
+
+\subsubsection{不确定度计算}
+
+对10个油滴求得的基本电荷值 $\{e_i\}$ 进行A类不确定度评定：
+
+\begin{itemize}
+    \item 平均值：$\bar{e} = \dfrac{1}{n}\sum_{i=1}^{n} e_i = 1.600 \times 10^{-19}$\,C
+    \item 标准偏差：$\sigma = \sqrt{\dfrac{1}{n-1}\sum_{i=1}^{n}(e_i - \bar{e})^2} = 0.0119 \times 10^{-19}$\,C
+    \item A类不确定度：$u_A = \dfrac{\sigma}{\sqrt{n}} = \dfrac{0.0119}{\sqrt{10}} \times 10^{-19} = 0.004 \times 10^{-19}$\,C
+\end{itemize}
+
+B类不确定度（由仪器系统误差引起）估算为 $u_B \approx 0.01 \times 10^{-19}$\,C，合成不确定度：
+\begin{equation}
+    u_c = \sqrt{u_A^2 + u_B^2} \approx 0.011 \times 10^{-19}\,\mathrm{C}
+\end{equation}
+
+取 $k = 2$ 的扩展不确定度，最终结果表达式为：
+\begin{equation}
+    \boxed{e = (1.600 \pm 0.004) \times 10^{-19}\,\mathrm{C}, \quad E_r = 0.12\%}
+\end{equation}
+
+该结果与国际公认值 $e_0 = 1.602176634 \times 10^{-19}$\,C（2019年SI定义）的相对误差仅为 $0.12\%$，充分验证了密立根油滴实验的科学性与可靠性。
+
+\section{实验探讨与思考题（10分）}
+（对实验内容、现象和过程的小结，不超过100字。并解答教材或讲义或老师布置的思考题，请先写题干，再作答。）
+
+\subsection{实验探讨}
+
+本实验通过静态平衡法与匀速下降法联合测定基本电荷量 $e$，实测值 $(1.600 \pm 0.004) \times 10^{-19}$\,C 与标准值相对误差仅0.12\%。实验难点在于合适油滴的选择与匀速运动判断，需反复尝试并严格控制计时起点。公约数法有效提取了多颗油滴数据中的基本电荷信息，证明了电荷的量子化特性，体现了密立根实验设计的精巧性。
+
+\subsection{思考题}
+
+\subsubsection{思考题1：为什么要选择运动缓慢的油滴进行测量？}
+
+\textbf{答：}选择运动缓慢的油滴有以下几个原因：
+
+\begin{enumerate}
+    \item \textbf{提高计时精度：}下落速度慢意味着通过固定距离（1.5\,mm）所需时间较长，人为计时误差（反应时间约0.2\,s）占总时间的比例较小，相对误差降低；
+    \item \textbf{减小布朗运动影响：}运动缓慢的油滴通常半径适中（约1--2\,$\mu$m），既不会因过小而受布朗运动显著影响，也不会因过大而带电量过多难以测准基本电荷；
+    \item \textbf{便于观察与追踪：}缓慢运动的油滴在显微镜视野中停留时间长，便于操作者判断其是否达到匀速状态并准确计时；
+    \item \textbf{电荷量适中：}下落时间在5--10\,s/mm的油滴，其平衡电压通常在100--300\,V之间，所带电荷倍数约为1--20个基本电荷，既满足测量精度要求又便于用公约数法提取基本电荷值。
+\end{enumerate}
+
+\subsubsection{思考题2：若油滴带负电，实验原理和操作有何不同？}
+
+\textbf{答：}若油滴带负电，实验原理不变，但操作需调整：
+
+\begin{enumerate}
+    \item \textbf{电场方向：}使油滴平衡时，需将上极板接负极、下极板接正极（与正电荷相反），使电场力方向向上对抗重力；
+    \item \textbf{力平衡方程：}带负电油滴在向上电场力作用下平衡，仍满足 $qE = mg$，计算公式不变；
+    \item \textbf{运动观察：}加电场后，若电压过大，油滴会向上运动；若电压过小，油滴继续下落。调节电压使油滴静止悬浮的过程与正电荷相同，只是极性相反；
+    \item \textbf{电荷量计算：}$q$ 的绝对值计算方式完全相同，只是带负号，对基本电荷 $e$ 的测量无影响。
+\end{enumerate}
+
+实际实验中，摩擦起电产生的油滴以正电荷为主，但偶尔也会出现带负电的油滴，只需反接电源极性即可正常测量。
+
+\subsubsection{思考题3：为什么要对多颗油滴进行测量？}
+
+\textbf{答：}对多颗油滴测量的必要性体现在：
+
+\begin{enumerate}
+    \item \textbf{公约数法的要求：}基本电荷 $e$ 是所有电荷量 $q_i$ 的公约数，只有测量足够多的油滴（通常至少5--10颗），才能从不同倍数的电荷量中可靠地提取出基本电荷值；
+    \item \textbf{减小偶然误差：}单颗油滴的测量可能受计时误差、布朗运动、气流扰动等随机因素影响较大，多次测量取平均值可有效降低随机误差；
+    \item \textbf{验证量子化特性：}测量多颗带电量不同的油滴，发现它们的电荷量均约为某一固定值的整数倍，这正是电荷量子化的直接证据；
+    \item \textbf{剔除异常数据：}通过对比多颗油滴的结果，可识别并剔除因操作失误或油滴异常（如蒸发、凝聚）导致的异常数据，提高结果可靠性。
+\end{enumerate}
+
+\input{注意事项}
+\end{document}

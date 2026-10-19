@@ -1,0 +1,41 @@
+{
+    // ===== LaTeX Workshop 配置 =====
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex × 2",
+            "tools": ["xelatex", "xelatex"]
+        }
+    ],
+    "latex-workshop.latex.outDir": "%DIR%",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "tab",
+
+    // ===== Python 配置 =====
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+
+    // ===== 文件关联 =====
+    "files.associations": {
+        "*.cls": "latex",
+        "*.sty": "latex",
+        "*.bst": "latex"
+    },
+
+    // ===== 编辑器配置 =====
+    "editor.formatOnSave": false,
+    "[latex]": {
+        "editor.wordWrap": "on"
+    }
+}
