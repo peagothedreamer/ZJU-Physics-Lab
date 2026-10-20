@@ -1,0 +1,73 @@
+\documentclass{Preport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\usepackage{float}       % 提供 [H] 选项，强制浮动体在此处
+\usepackage{amsmath}
+
+\exname{\small 铁磁材料的磁滞回线和基本磁化曲线} %实验名称
+\instructor{陈飞燕} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{10} %月
+\nday{20} %日
+\nweekday{二} %星期几
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+铁磁材料内部存在自发磁化的小区域——磁畴。外磁场增强时，磁畴转动与畴壁迁移使 $B$ 随 $H$ 非线性增大，$H$ 足够大后达到磁饱和，对应饱和磁感应强度 $B_s$。减小 $H$ 时 $B$ 不沿原路返回：$H=0$ 时保留剩磁 $B_r$，需反向磁场 $H_c$（矫顽力）才能使 $B=0$。$H$ 循环变化时 $B$ 形成闭合磁滞回线；不同幅值回线顶点的连线为基本磁化曲线，其斜率给出磁导率 $\mu=B/H$。动态回线还包含涡流损耗，面积大于静态回线并随频率变化；磁滞损耗正比于回线面积。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.34\linewidth]{bh_curve.jpg}
+    \caption{起始磁化曲线与磁滞回线}
+    \label{fig:bh-curve}
+\end{figure}
+
+实验采用转换法。环形样品上绕励磁线圈 $N_1$ 和测量线圈 $N_2$；$N_1$ 中通交流电流 $I_1$，由安培环路定理 $H=N_1I_1/L$。取样电阻 $R_1$ 上的电压 $U_x=I_1R_1$ 接入示波器 X 轴，故 $U_x\propto H$。$N_2$ 的感应电动势 $E_2=N_2S\,\mathrm{d}B/\mathrm{d}t$ 经 $R_2C$ 积分电路（$R_2\gg 1/2\pi fC$）积分，电容电压 $U_y=N_2SB/(R_2C)$ 接入 Y 轴，故 $U_y\propto B$。示波器置 X-Y 模式即可显示磁滞回线，由
+\begin{equation*}
+    H=\frac{N_1U_x}{LR_1},\qquad B=\frac{R_2CU_y}{N_2S},
+\end{equation*}
+或按灵敏度 $S_x$、$S_y$ 与格数 $X$、$Y$ 定标求 $H$、$B$。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.72\linewidth]{bh_circuit.jpg}
+    \caption{示波器显示 $B$-$H$ 曲线的原理线路}
+    \label{fig:bh-circuit}
+\end{figure}
+
+实验先升压至饱和调好图形，再单调降压至零退磁；以 0.5\,V 步长升压，记录各回线顶点得基本磁化曲线；保持 3\,V 逐点读取饱和回线坐标，求 $B_s$、$B_r$、$H_c$ 及回线面积，并比较不同频率与样品。
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+\begin{enumerate}
+    \item 理解磁滞、剩磁、矫顽力及基本磁化曲线的物理意义；
+    \item 掌握示波器 X-Y 法（转换法）显示动态磁滞回线的原理；
+    \item 学会退磁、定标及由回线求 $B_s$、$B_r$、$H_c$ 与磁滞损耗。
+\end{enumerate}
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+\begin{enumerate}
+    \item 退磁须单调降压至零，否则剩磁使曲线偏离原点；
+    \item X-Y 增益、耦合与光斑位置需协调，否则回线畸变或显示不全；
+    \item 光标读取交点与顶点误差较大，直接影响 $B_r$、$H_c$ 和面积；
+    \item 积分条件 $R_2\gg 1/(2\pi fC)$ 不满足时回线出现畸变。
+\end{enumerate}
+
+\input{注意事项}
+\end{document}
