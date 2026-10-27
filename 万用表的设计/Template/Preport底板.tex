@@ -1,0 +1,116 @@
+\documentclass{Preport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[european]{circuitikz}
+
+\exname{万用表的设计} %实验名称
+\instructor{杨佳楠} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{10} %月
+\nday{27} %日
+\nweekday{二} %星期几
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+电流计的线圈置于永磁体磁场中，通电后受安培力 $F=BIL\sin\alpha$ 作用，磁力矩与游丝恢复力矩平衡，指针偏转角与电流成正比。改装后，指针偏转分别与电流、电压或待测电阻呈确定的对应关系。
+
+\textbf{5\,mA 电流表}：表头（$I_g$，$R_g$）并联分流电阻 $R_s$，满偏时
+\begin{equation}
+    (I-I_g)R_s=I_gR_g
+    \quad\Rightarrow\quad
+    R_s=\frac{I_gR_g}{I-I_g},\qquad I=5\,\mathrm{mA}.
+    \label{eq:ammeter}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) to[short, o-] (0,2)
+              to[rmeter, t=$G$] (4,2)
+              to[short, -o] (4,0);
+        \draw (0,0) -- (1,0) to[R=$R_s$] (3,0) -- (4,0);
+    \end{circuitikz}
+    \caption{5\,mA 电流表改装电路}
+    \label{fig:ammeter}
+\end{figure}
+
+\textbf{5\,V 电压表}：以改装后的电流表为表头，其等效内阻 $R_g'=\dfrac{R_gR_s}{R_g+R_s}$、满偏电流 $I_g'=I$，串联分压电阻 $R_V$，满偏时
+\begin{equation}
+    U=I_g'(R_g'+R_V)
+    \quad\Rightarrow\quad
+    R_V=\frac{U}{I_g'}-R_g',\qquad U=5\,\mathrm{V}.
+    \label{eq:voltmeter}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) to[rmeter, o-, t=$G'$] (3,0)
+              to[R=$R_V$, -o] (6,0);
+    \end{circuitikz}
+    \caption{5\,V 电压表改装电路}
+    \label{fig:voltmeter}
+\end{figure}
+
+\textbf{欧姆表}：表头、限流电阻 $R_5$、调零电阻 $R_6$ 与干电池（电动势 $E_0$，内阻 $r$）串联，记回路总电阻 $R'=R_g'+R_5+R_6+r$。短路 $a$、$b$ 两端，调节 $R_6$ 使指针满偏：
+\begin{equation}
+    E_0=I_g'R'.
+    \label{eq:zero}
+\end{equation}
+接入待测电阻 $R_x$ 后，回路电流
+\begin{equation}
+    I_x=\frac{E_0}{R'+R_x}.
+    \label{eq:ohmmeter}
+\end{equation}
+$I_x$ 随 $R_x$ 非线性减小，中值电阻 $R_{\text{中}}=R'=E_0/I_g'$。
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) -- (0,2)
+              to[rmeter, t=$G'$] (2.2,2)
+              to[R=$R_5$] (4,2)
+              to[vR=$R_6$] (5.2,2)
+              to[battery1, l=$E_0$] (6.6,2)
+              -- (6.6,0);
+        \draw[dashed] (0,0) -- (0,-1.4)
+              to[R=$R_x$] (6.6,-1.4) -- (6.6,0);
+        \node[circ] at (0,0) {};
+        \node[circ] at (6.6,0) {};
+        \node[left] at (0,0) {$a$};
+        \node[right] at (6.6,0) {$b$};
+    \end{circuitikz}
+    \caption{欧姆表改装电路}
+    \label{fig:ohmmeter}
+\end{figure}
+
+实验方法：按图~\ref{fig:ammeter}--\ref{fig:ohmmeter} 分别设计并组装 5\,mA 电流表、5\,V 电压表和欧姆表，用标准表校验并校准，绘制 $I_x$--$R_x$ 曲线，分析欧姆表的刻度分布特征。
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+掌握电流计的工作原理与改装方法；学会由满偏条件计算分流、分压电阻；掌握电流表、电压表、欧姆表的电路设计、组装与校准方法。
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+电流计内阻的精确测量；欧姆表调零及非线性刻度的分析；校准中系统误差的识别与修正。
+
+\input{注意事项}
+\end{document}

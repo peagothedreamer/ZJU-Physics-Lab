@@ -1,0 +1,403 @@
+\documentclass{Phyport}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\input{选用宏.tex} %选用宏
+\usepackage[european]{circuitikz}
+
+\exname{万用表的设计} %实验名称
+\extable{7} %实验桌号
+\instructor{杨佳楠} %指导教师
+\class{电科2502} %班级
+\name{管云哲} %姓名
+\stuid{3250104519} %学号
+
+\nyear{2026} %年
+\nmonth{10} %月
+\nday{27} %日
+\nweekday{二} %星期几
+
+\redate{} %如有实验补做，补做日期
+\resitu{} %情况说明：
+
+\begin{document}
+\setcounter{page}{1}
+\makecover
+
+\section{预习报告（10分）}
+（注：将已经写好的“物理实验预习报告”内容拷贝过来）
+
+\subsection{实验综述（5分）}
+（自述实验现象、实验原理和实验方法，包括必要的光路图、电路图、公式等。不超过500字。）
+
+电流计的线圈置于永磁体磁场中，通电后受安培力 $F=BIL\sin\alpha$ 作用，磁力矩与游丝恢复力矩平衡，指针偏转角与电流成正比。改装后，指针偏转分别与电流、电压或待测电阻呈确定的对应关系。
+
+\textbf{5\,mA 电流表}：表头（满偏电流 $I_g$，内阻 $R_g$）并联分流电阻 $R_1$，满偏时
+\begin{equation}
+    (I-I_g)R_1=I_gR_g
+    \quad\Rightarrow\quad
+    R_1=\frac{I_gR_g}{I-I_g},\qquad I=5\,\mathrm{mA}.
+    \label{eq:ammeter}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) to[short, o-] (0,2)
+              to[rmeter, t=$G$] (4,2)
+              to[short, -o] (4,0);
+        \draw (0,0) -- (1,0) to[R=$R_1$] (3,0) -- (4,0);
+    \end{circuitikz}
+    \caption{5\,mA 电流表改装电路}
+    \label{fig:ammeter}
+\end{figure}
+
+\textbf{5\,V 电压表}：以改装后的电流表为表头，其等效内阻 $R_{AB}=\dfrac{R_gR_1}{R_g+R_1}$、满偏电流 $I=5\,\mathrm{mA}$，串联分压电阻 $R_3$，满偏时
+\begin{equation}
+    U=I(R_{AB}+R_3)
+    \quad\Rightarrow\quad
+    R_3=\frac{U}{I}-R_{AB},\qquad U=5\,\mathrm{V}.
+    \label{eq:voltmeter}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) to[rmeter, o-, t=$G'$] (3,0)
+              to[R=$R_3$, -o] (6,0);
+    \end{circuitikz}
+    \caption{5\,V 电压表改装电路}
+    \label{fig:voltmeter}
+\end{figure}
+
+\textbf{欧姆表}：表头、限流电阻 $R_5$、调零电阻 $R_6$ 与干电池（电动势 $E_0$，内阻 $r$）串联，记回路总电阻 $R_0=R_{AB}+R_5+R_6+r$。短路 $a$、$b$ 两端，调节 $R_6$ 使指针满偏：
+\begin{equation}
+    E_0=I_{\text{总}}R_0.
+    \label{eq:zero}
+\end{equation}
+接入待测电阻 $R_x$ 后，表头支路电流
+\begin{equation}
+    I_x=\frac{I_gR_0}{R_0+R_x}.
+    \label{eq:ohmmeter}
+\end{equation}
+$I_x$ 随 $R_x$ 非线性减小，中值电阻 $R_{\text{中}}=R_0$。
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[european]
+        \draw (0,0) -- (0,2)
+              to[rmeter, t=$G'$] (2.2,2)
+              to[R=$R_5$] (4,2)
+              to[vR=$R_6$] (5.2,2)
+              to[battery1, l=$E_0$] (6.6,2)
+              -- (6.6,0);
+        \draw[dashed] (0,0) -- (0,-1.4)
+              to[R=$R_x$] (6.6,-1.4) -- (6.6,0);
+        \node[circ] at (0,0) {};
+        \node[circ] at (6.6,0) {};
+        \node[left] at (0,0) {$a$};
+        \node[right] at (6.6,0) {$b$};
+    \end{circuitikz}
+    \caption{欧姆表改装电路}
+    \label{fig:ohmmeter}
+\end{figure}
+
+实验方法：按图~\ref{fig:ammeter}--\ref{fig:ohmmeter} 分别设计并组装 5\,mA 电流表、5\,V 电压表和欧姆表，用标准表校验并校准，绘制 $I_x$--$R_x$ 曲线，分析欧姆表的刻度分布特征。
+
+\subsection{实验重点（3分）}
+（简述本实验的学习重点，不超过100字。）
+
+掌握电流计的工作原理与改装方法；学会由满偏条件计算分流、分压电阻；掌握电流表、电压表、欧姆表的电路设计、组装与校准方法。
+
+\subsection{实验难点（2分）}
+（简述本实验的实现难点，不超过100字。）
+
+电流计内阻的精确测量；欧姆表调零及非线性刻度的分析；校准中系统误差的识别与修正。
+
+\section{实验操作与原始数据（50分）}
+（将有老师签名的“自备数据记录草稿纸”的扫描或手机拍摄图粘贴在下方，完整保留姓名，学号，教师签字和日期。按老师的要求拍摄实验过程图，附在此处）
+
+本实验以满偏电流约 1\,mA 的表头为基础：并联分流电阻 $R_1$ 构成 5\,mA 电流表，再串联分压电阻 $R_3$ 构成 5\,V 电压表；另以表头、限流电阻 $R_5$、调零电阻 $R_6$ 和干电池组成欧姆表。校准点取 1.00、2.00、3.00、4.00 及满偏 5.00\,mA（V）。
+
+主要操作步骤：
+\begin{enumerate}
+    \item 5\,mA 电流表：按图~\ref{fig:ammeter} 连接表头与分流电阻 $R_1$。将电源输出调至标准表 5.00\,mA，调节 $R_1$ 使改装表满偏；再依次在 1.00--5.00\,mA 各点校准，记录标准表读数。
+    \item 5\,V 电压表：以改装后的 5\,mA 电流表为表头，按图~\ref{fig:voltmeter} 串联分压电阻 $R_3$。将输出调至标准表 5.00\,V，调节 $R_3$ 使指针满偏；再逐点校准并记录。
+    \item 欧姆表：按图~\ref{fig:ohmmeter} 连接表头、限流电阻 $R_5$、调零电阻 $R_6$ 与干电池。短接 $a$、$b$ 调零并记录 $R_6$；接入电阻箱 $R_x$，逐点记录电流计读数 $I$，并用半偏法确定中值电阻。
+\end{enumerate}
+
+实验原始数据记录如图~\ref{fig:rawdata} 所示。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.72\linewidth, height=0.80\textheight, keepaspectratio]{原始数据.jpg}
+    \caption{原始数据记录}
+    \label{fig:rawdata}
+\end{figure}
+
+\section{结果与分析（30分）}
+\subsection{数据处理与结果（20分）}
+（列出数据表格、选择适合的数据处理方法、写出测量或计算结果。）
+
+\subsubsection{5\,mA 电流表的改装与校准}
+
+由分流公式~\eqref{eq:ammeter}，取表头满偏电流 $I_g=1.00\,\mathrm{mA}$、改装表量程 $I=5.00\,\mathrm{mA}$、实测分流电阻 $R_1=60\,\Omega$，得表头内阻
+\begin{equation}
+    R_g=\frac{(I-I_g)R_1}{I_g}=240\,\Omega,
+\end{equation}
+改装后电流表的等效内阻 $R_{AB}=R_1\parallel R_g=48\,\Omega$。校准数据见表~\ref{tab:ammeter}。
+
+\begin{table}[H]
+    \centering
+    \caption{5\,mA 电流表校准数据}
+    \label{tab:ammeter}
+    \begin{tabular}{cccccc}
+        \toprule
+        $I_x$ / mA & 1.00 & 2.00 & 3.00 & 4.00 & 5.00 \\
+        \midrule
+        $I_0$ / mA & 1.02 & 2.08 & 3.04 & 4.06 & 5.00 \\
+        $\Delta I$ / mA & 0.02 & 0.08 & 0.04 & 0.06 & 0.00 \\
+        $\delta I$ / \% & 1.96 & 3.85 & 1.32 & 1.48 & 0.00 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+表中 $\Delta I=I_0-I_x$，$\delta I=|\Delta I|/I_0\times100\%$。按引用误差
+\begin{equation}
+    \gamma_I=\frac{\Delta I_{\max}}{I_{\mathrm{FS}}}\times100\%
+    =\frac{0.08}{5.00}\times100\%=1.6\%,
+\end{equation}
+取标准等级序列中不小于该值的最近等级，改装电流表定为 \textbf{2.5 级}。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\linewidth]{ammeter_calibration.pdf}
+    \caption{5\,mA 电流表校准曲线}
+    \label{fig:ammeter-cal}
+\end{figure}
+
+线性拟合得
+\begin{equation}
+    I_0=(0.9940\pm0.0110)I_x+(0.058\pm0.037),\qquad R^2=0.9996.
+\end{equation}
+斜率接近 1、截距接近 0，说明改装表在全量程内线性良好；各点偏差均在 0.08\,mA 以内。
+
+\subsubsection{5\,V 电压表的改装与校准}
+
+以改装后的 5\,mA 电流表为表头，其等效内阻 $R_{AB}=48\,\Omega$、满偏电流 $I=5.00\,\mathrm{mA}$。由式~\eqref{eq:voltmeter} 得串联分压电阻的理论值
+\begin{equation}
+    R_3=\frac{U}{I}-R_{AB}
+    =\frac{5.00}{5.00\times10^{-3}}-48=952\,\Omega.
+\end{equation}
+实测调至满偏时 $R_3=938.2\,\Omega$，与理论值相差
+\begin{equation}
+    \frac{938.2-952}{952}\times100\%=-1.45\%.
+\end{equation}
+校准数据见表~\ref{tab:voltmeter}。
+
+\begin{table}[H]
+    \centering
+    \caption{5\,V 电压表校准数据}
+    \label{tab:voltmeter}
+    \begin{tabular}{cccccc}
+        \toprule
+        $U_x$ / V & 1.00 & 2.00 & 3.00 & 4.00 & 5.00 \\
+        \midrule
+        $U_0$ / V & 1.03 & 1.98 & 3.08 & 4.05 & 5.00 \\
+        $\Delta U$ / V & 0.03 & $-0.02$ & 0.08 & 0.05 & 0.00 \\
+        $\delta U$ / \% & 2.91 & 1.01 & 2.60 & 1.23 & 0.00 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+按引用误差
+\begin{equation}
+    \gamma_U=\frac{\Delta U_{\max}}{U_{\mathrm{FS}}}\times100\%
+    =\frac{0.08}{5.00}\times100\%=1.6\%,
+\end{equation}
+改装电压表同样定为 \textbf{2.5 级}。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\linewidth]{voltmeter_calibration.pdf}
+    \caption{5\,V 电压表校准曲线}
+    \label{fig:voltmeter-cal}
+\end{figure}
+
+线性拟合得
+\begin{equation}
+    U_0=(1.0010\pm0.0145)U_x+(0.025\pm0.048),\qquad R^2=0.9994.
+\end{equation}
+斜率与 1 的偏差仅 0.1\%，说明分压改装后线性良好。
+
+\subsubsection{欧姆表的改装与刻度分析}
+
+欧姆表满偏时表头支路电流 $I_g=1.00\,\mathrm{mA}$，回路总电流为 $5I_g=5.00\,\mathrm{mA}$。短接 $a$、$b$ 调零，记录调零电阻箱示值 $R_6=930.0\,\Omega$；接入 $R_x$ 后，表头读数满足
+\begin{equation}
+    I=\frac{I_gR_0}{R_0+R_x},
+    \label{eq:ohmfit}
+\end{equation}
+其中 $R_0$ 为欧姆表等效内阻，即中值电阻。测量数据见表~\ref{tab:ohmmeter}。
+
+\begin{table}[H]
+    \centering
+    \caption{欧姆表 $I$--$R_x$ 数据}
+    \label{tab:ohmmeter}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{l*{7}{c}}
+        \toprule
+        $R_x$ / $\Omega$ & 0 & 100 & 200 & 300 & 400 & 500 & 600 \\
+        $I$ / mA & 1.00 & 0.76 & 0.62 & 0.51 & 0.44 & 0.39 & 0.34 \\
+        \midrule
+        $R_x$ / $\Omega$ & 700 & 800 & 900 & 1000 & 2000 & 3000 & \\
+        $I$ / mA & 0.30 & 0.28 & 0.26 & 0.24 & 0.13 & 0.09 & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+以式~\eqref{eq:ohmfit} 对表~\ref{tab:ohmmeter} 作最小二乘拟合，得
+\begin{equation}
+    I_g=(1.003\pm0.004)\,\mathrm{mA},\qquad
+    R_0=(311.9\pm3.3)\,\Omega,\qquad
+    R^2=0.9997.
+\end{equation}
+半偏时 $I=I_g/2=0.50\,\mathrm{mA}$，由数据线性插值得 $R_{\text{中}}=312.2\,\Omega$，与拟合值 311.9\,$\Omega$ 一致（图~\ref{fig:ohmmeter-cal}）。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.72\linewidth]{ohmmeter_curve.pdf}
+    \caption{欧姆表 $I$--$R_x$ 曲线及中值电阻}
+    \label{fig:ohmmeter-cal}
+\end{figure}
+
+对式~\eqref{eq:ohmfit} 求导得刻度灵敏度
+\begin{equation}
+    \frac{\mathrm{d}I}{\mathrm{d}R_x}
+    =-\frac{I_gR_0}{(R_0+R_x)^2}.
+\end{equation}
+在 $R_x=0$ 处约为 $3.22\,\mu\mathrm{A}/\Omega$，在 $R_x=R_0$ 处约为 $0.80\,\mu\mathrm{A}/\Omega$，在 $R_x=3000\,\Omega$ 处仅约 $0.029\,\mu\mathrm{A}/\Omega$。由表~\ref{tab:ohmmeter} 亦可见：$R_x$ 从 0 增至 100\,$\Omega$ 时 $I$ 下降 0.24\,mA，而从 2000\,$\Omega$ 增至 3000\,$\Omega$ 时仅下降 0.04\,mA。因此欧姆表刻度呈明显的非线性：小电阻端（右端，靠近 0）刻度稀疏，大电阻端（左端，靠近 $\infty$）刻度密集；仅在中值电阻附近的有限区间内近似均匀。
+
+\subsubsection{改装结果汇总}
+
+\begin{table}[H]
+    \centering
+    \caption{万用表改装与校准结果}
+    \label{tab:summary}
+    \begin{tabular}{lccc}
+        \toprule
+        项目 & 设计/测量参数 & 校准结果 & 等级 \\
+        \midrule
+        5\,mA 电流表 & $R_1=60\,\Omega$ & $\Delta I_{\max}=0.08\,\mathrm{mA}$ & 2.5 级 \\
+        5\,V 电压表 & $R_3=938.2\,\Omega$ & $\Delta U_{\max}=0.08\,\mathrm{V}$ & 2.5 级 \\
+        欧姆表 & $R_5=200\,\Omega$，$R_6=930.0\,\Omega$ & $R_{\text{中}}=312\pm3\,\Omega$ & --- \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{误差分析（10分）}
+（运用测量误差、相对误差或不确定度等分析实验结果，写出完整的结果表达式，并分析误差原因。）
+
+\subsubsection{5\,mA 电流表}
+
+各校准点的示值误差平均值为 $\overline{\Delta I}=0.040\,\mathrm{mA}$，样本标准差 $s=0.032\,\mathrm{mA}$，A 类不确定度
+\begin{equation}
+    u_A=\frac{s}{\sqrt{5}}=0.014\,\mathrm{mA}.
+\end{equation}
+设标准表为 0.5 级（量程 5\,mA），其最大允许误差引起的 B 类不确定度
+\begin{equation}
+    u_{B1}=\frac{0.5\%\times5.00}{\sqrt{3}}=0.0144\,\mathrm{mA},
+\end{equation}
+标准表读数分辨力 0.01\,mA 引起的 $u_{B2}=0.01/\sqrt{3}=0.0058\,\mathrm{mA}$。合成不确定度
+\begin{equation}
+    u_I=\sqrt{u_A^2+u_{B1}^2+u_{B2}^2}=0.021\,\mathrm{mA}.
+\end{equation}
+故示值误差的结果表达式为
+\begin{equation}
+    \Delta I=(0.04\pm0.02)\,\mathrm{mA},
+\end{equation}
+最大相对误差 3.85\%（2.00\,mA 处），引用误差 1.6\%，定为 2.5 级。
+
+\subsubsection{5\,V 电压表}
+
+示值误差平均值 $\overline{\Delta U}=0.028\,\mathrm{V}$，标准差 $s=0.040\,\mathrm{V}$，故
+\begin{equation}
+    u_A=\frac{s}{\sqrt{5}}=0.018\,\mathrm{V},\qquad
+    u_{B1}=\frac{0.5\%\times5.00}{\sqrt{3}}=0.0144\,\mathrm{V},\qquad
+    u_{B2}=\frac{0.01}{\sqrt{3}}=0.0058\,\mathrm{V},
+\end{equation}
+\begin{equation}
+    u_U=\sqrt{u_A^2+u_{B1}^2+u_{B2}^2}=0.024\,\mathrm{V}.
+\end{equation}
+结果表达式为
+\begin{equation}
+    \Delta U=(0.03\pm0.02)\,\mathrm{V},
+\end{equation}
+最大相对误差 2.91\%（1.00\,V 处），引用误差 1.6\%，定为 2.5 级。
+
+\subsubsection{欧姆表}
+
+拟合给出 $R_0=(311.9\pm3.3)\,\Omega$，相对不确定度 $3.3/311.9=1.1\%$；$I_g=(1.003\pm0.004)\,\mathrm{mA}$，相对不确定度 $0.4\%$。拟合残差最大绝对值 0.009\,mA，最大相对偏差 4.9\%（出现在 $R_x=3000\,\Omega$，此时电流仅 0.09\,mA，读数分辨力影响显著）。中值电阻的测量结果为
+\begin{equation}
+    R_{\text{中}}=(312\pm3)\,\Omega.
+\end{equation}
+
+\subsubsection{误差来源分析}
+
+\begin{enumerate}
+    \item \textbf{标准表误差}：标准电流表、电压表本身为 0.5 级，其示值误差直接混入改装表的校准结果，使观测到的示值误差偏大或偏小。
+    \item \textbf{元件参数偏差}：表头内阻 $R_g$、分流电阻 $R_1$、分压电阻 $R_3$ 的标称值与实际值存在偏差，电阻箱的接触电阻和温度漂移也会改变实际阻值。实测 $R_3=938.2\,\Omega$ 比理论值 952\,$\Omega$ 低 1.45\%，即反映了这种偏差。
+    \item \textbf{读数误差}：指针与刻度面之间存在视差，估读末位、轻敲表壳前后指针位置不完全一致，均会引入随机误差。
+    \item \textbf{欧姆表电池的影响}：干电池的电动势和内阻随使用时间变化。调零虽可补偿部分变化，但若电池老化导致 $R_6$ 调节范围不足，满偏点将偏移；$R_x$ 越大，电流越小，相对误差越显著。
+    \item \textbf{接触与接线电阻}：在低阻端（$R_x$ 较小）测量时，接线电阻、接触电阻与被测电阻可比，导致低阻端读数偏大。
+    \item \textbf{环境与机械因素}：温度变化影响游丝弹性与电阻温度系数；表头机械零点未完全校准、轴尖摩擦等也会带来系统偏差。
+\end{enumerate}
+
+\section{实验探讨与思考题（10分）}
+（对实验内容、现象和过程的小结，不超过100字。并解答教材或讲义或老师布置的思考题，请先写题干，再作答。）
+
+本实验将 1\,mA 表头分别改装为 5\,mA 电流表、5\,V 电压表和欧姆表。校准曲线线性良好，电流表与电压表均达 2.5 级；欧姆表中值电阻约 312\,$\Omega$，刻度左密右疏。
+
+\subsubsection{思考题 1}
+\textbf{题干：}为什么不能用万用表欧姆档测量电源内阻？
+
+\textbf{解答：}欧姆档工作时由表内电池供电，通过测量流过待测电阻的电流来指示电阻值，其前提是待测电路无源。若用欧姆档测量电源内阻，待测电源会向表头注入电流，该电流与表内电池产生的电流叠加或反向，使指针偏转不再对应外接电阻，读数错误；反向电流较大时还可能损坏表头。此外，电源内阻很小且随负载、电量变化，欧姆档的分辨力和测量条件均不适合。正确做法是断开电源，用伏安法或专用内阻测试仪测量。
+
+\subsubsection{思考题 2}
+\textbf{题干：}调研数字万用表与指针式万用表的差异。
+
+\textbf{解答：}两类万用表的主要差异见表~\ref{tab:dmm}。数字万用表以 A/D 转换和数字显示为核心，输入阻抗高、准确度和分辨力高、功能多、保护完善；指针式万用表以磁电式表头为核心，结构简单、响应连续、无需电源即可测量电压和电流，但输入阻抗低、读数有视差、过载能力弱。实际使用时，数字表适合精确测量，指针表适合观察变化趋势和进行调零、判断通断。
+
+\begin{table}[H]
+    \centering
+    \caption{数字万用表与指针式万用表的主要差异}
+    \label{tab:dmm}
+    \small
+    \begin{tabular}{p{0.16\linewidth}p{0.37\linewidth}p{0.37\linewidth}}
+        \toprule
+        项目 & 数字万用表 & 指针式万用表 \\
+        \midrule
+        显示方式 & 数字直接显示，无视差 & 指针指示，需估读，有视差 \\
+        输入阻抗 & 高（通常 10\,M$\Omega$），负载效应小 & 较低（如 20\,k$\Omega$/V），负载效应明显 \\
+        准确度与分辨力 & 高，分辨力可达 0.1\% 以上 & 受表头等级和刻度限制，通常较低 \\
+        功能 & 自动量程、交直流、电容、频率、二极管、通断等 & 以电压、电流、电阻等基本测量为主 \\
+        过载保护 & 较强，常带自动保护 & 较弱，过载易损坏表头 \\
+        响应特性 & 采样与显示有延迟，数值跳动 & 响应连续，便于观察趋势和调零 \\
+        电源 & 各档均需电池 & 仅电阻档需电池 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{思考题 3}
+\textbf{题干：}欧姆表中干电池内阻变了对它有什么影响？
+
+\textbf{解答：}设电池电动势为 $E$、内阻为 $r$，欧姆表等效内阻 $R_0=R_{AB}+R_5+R_6+r$，调零条件是 $E/R_0=I_{\text{总}}$。若干电池内阻 $r$ 增大而电动势不变，短路电流减小，指针达不到满偏；此时需减小 $R_6$ 重新调零。若 $R_6$ 的调节范围足够，调零后 $R_0$ 仍等于 $E/I_{\text{总}}$，刻度不受影响。但若未重新调零，或 $R_6$ 已调到下限仍无法满偏，则各点电流偏小，按原刻度读数偏大，高阻端尤为明显。电池老化通常还伴随电动势 $E$ 下降；即使重新调零，新的等效内阻 $R_0'=E'/I_{\text{总}}<R_0$，对同一 $R_x$ 有 $I=E'/(R_0'+R_x)$，按原刻度读出的示值为
+\begin{equation}
+    R_x'=\frac{R_0}{R_0'}R_x,
+\end{equation}
+即读数偏大，相对误差 $R_0/R_0'-1$ 与 $R_x$ 无关，绝对误差随 $R_x$ 增大而增大。因此欧姆表使用前必须短接调零，电池电量不足时应及时更换。
+
+\input{注意事项}
+\end{document}
