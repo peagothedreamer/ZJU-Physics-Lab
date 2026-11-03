@@ -1,0 +1,26 @@
+# 浙江大学大物实验课数据处理 — Python 依赖
+# 安装方式: pip install -r requirements.txt
+
+# 数值计算
+numpy
+scipy
+
+# 绘图
+matplotlib
+PyQt6               # matplotlib 交互式 Qt 后端
+
+# 数据处理
+pandas
+openpyxl            # 读写 xlsx 文件
+
+# 符号计算
+sympy
+
+# 图片处理
+pillow
+
+# 不确定度传递计算（pip 专属）
+uncertainties
+
+# 高级曲线拟合（pip 专属）
+lmfit

@@ -1,0 +1,28 @@
+# Conda 环境定义文件 — 浙江大学大物实验课数据处理
+# 使用方式: conda env create -f environment.yml
+# 更新方式: conda env update -f environment.yml --prune
+
+name: phylab
+
+channels:
+  - defaults
+
+dependencies:
+  - python=3.10
+  # 数值计算
+  - numpy
+  - scipy
+  # 绘图
+  - matplotlib
+  - pyqt
+  # 数据处理
+  - pandas
+  - openpyxl          # 读写 xlsx 文件
+  # 符号计算
+  - sympy
+  # 图片处理
+  - pillow
+  # pip 安装的包
+  - pip:
+    - uncertainties   # 不确定度传递计算
+    - lmfit           # 高级曲线拟合
